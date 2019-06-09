@@ -2,7 +2,8 @@ fun main() {
     //stonesAndJewels()
     //unitsSequence()
     //areAnagrams()
-    removeDuplicates()
+    //removeDuplicates()
+    mergeLists()
 }
 
 fun stonesAndJewels() {
@@ -85,6 +86,20 @@ fun removeDuplicates() {
     for (i in 0 until arrayLength) {
         val newNumber = readLine()!!.toInt()
         sortedSet.add(newNumber)
+    }
+    println(sortedSet)
+}
+
+fun mergeLists() {
+    var arraysCount = 0
+    while (arraysCount !in 1..1024) {
+        arraysCount = readLine()!!.toInt()
+    }
+
+    val sortedSet = sortedSetOf<Int>()
+    for (i in 0 until arraysCount) {
+        val array = readLine()!!.trim().split(" ").map { it.toInt()}
+        sortedSet.addAll(array)
     }
     println(sortedSet)
 }
