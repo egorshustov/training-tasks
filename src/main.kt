@@ -3,7 +3,13 @@ fun main() {
     //unitsSequence()
     //areAnagrams()
     //removeDuplicates()
-    mergeLists()
+    //mergeLists()
+
+    var n = -1
+    while (n !in 0..11) {
+        n = readLine()!!.toInt()
+    }
+    generateBracketSequence("", 0, 0, n)
 }
 
 fun stonesAndJewels() {
@@ -77,7 +83,7 @@ fun areAnagrams() {
 }
 
 fun removeDuplicates() {
-    var arrayLength : Int? = null
+    var arrayLength: Int? = null
     while (arrayLength == null || !((0 < arrayLength) && (arrayLength < 1000000))) {
         arrayLength = readLine()?.toInt()
     }
@@ -98,10 +104,21 @@ fun mergeLists() {
 
     val sortedSet = sortedSetOf<Int>()
     for (i in 0 until arraysCount) {
-        val array = readLine()!!.trim().split(" ").map { it.toInt()}
+        val array = readLine()!!.trim().split(" ").map { it.toInt() }
         sortedSet.addAll(array)
     }
     println(sortedSet)
 }
 
-
+fun generateBracketSequence(sequence: String, openCount: Int, closedCount: Int, n: Int) {
+    if (sequence.length == 2 * n) {
+        println(sequence)
+        return
+    }
+    if (openCount < n) {
+        generateBracketSequence("$sequence(", openCount + 1, closedCount, n)
+    }
+    if (closedCount < openCount) {
+        generateBracketSequence("$sequence)", openCount, closedCount + 1, n)
+    }
+}
